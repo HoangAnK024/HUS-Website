@@ -110,7 +110,10 @@ body {
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      min-width: 300px;            /* đảm bảo biểu đồ không bị co nhỏ */
+      min-width: 350px;            /* đảm bảo biểu đồ không bị co nhỏ */
+      width: 100vw;                    /* Cho phép phóng theo chiều ngang */
+      height: auto;
+      max-width: 100%;  
   }
   
   
@@ -288,11 +291,19 @@ body {
     }
   
     .charts-container {
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;              /* Cho phép xuống dòng nếu cần */
+      justify-content: center;
       gap: 20px;
+      overflow-x: unset;  
     }
   
+    .charts-container canvas {
+      width: 90vw !important;       /* Chiếm 90% chiều rộng màn hình */
+      height: auto;
+      min-width: unset;             /* Bỏ min-width để linh hoạt hơn */
+      max-width: 100%;
+    }
+
     .images {
       justify-content: center;
       gap: 10px;
