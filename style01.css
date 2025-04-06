@@ -1,0 +1,253 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px 100px;
+    background: #f6f6f6;
+    color: #333;
+  }
+  
+  header {
+    background-color: #fff;
+    padding: 12px 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .logo {
+    padding-left: 15px;
+    height: 150px;
+  }
+  
+  .slogan {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 27px;
+    color: rgb(21, 100, 146);
+    margin-top: 4px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .search-box {
+    width: 300px;             /* tăng độ rộng */
+    height: 36px;             /* tăng chiều cao */
+    font-size: 16px;          /* tăng cỡ chữ */
+    padding: 5px 10px;
+    margin-top: 105px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    margin-left: auto;        /* đẩy về bên phải nếu nằm trong flex container */
+    margin-right: 10px;
+    align-self: center; 
+  }
+  
+  .navbar {
+    background-color: #59a6e7; /* màu nền xanh dương */
+    padding: 10px 0;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px; 
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-links li a:hover {
+    color: white;
+  }
+  
+  #realtime-data {
+    padding: 20px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #realtime-data h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      margin-top:0;
+  }
+
+  .charts-container {
+      display: flex;
+      flex-direction: row;         /* đảm bảo nằm ngang */
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: nowrap;           /* không cho rớt dòng */
+      overflow-x: auto;            /* nếu chật màn hình thì scroll ngang */
+      padding-bottom: 10px;
+  }
+
+  .charts-container canvas {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      min-width: 300px;            /* đảm bảo biểu đồ không bị co nhỏ */
+  }
+  
+  
+
+  
+  .gallery {
+    background: white;
+    padding: 50px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gallery p {
+    margin:0px;
+    padding-bottom: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .images {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .images img {
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  .sensor-section {
+    background-color: #f9f9f9;
+    padding: 30px;
+    padding-top: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sensor-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .sensor-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.05);
+  }
+  
+  .sensor-item img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+  }
+  
+  .sensor-info h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .sensor-info p {
+    margin: 5px 0 0;
+    color: #555;
+  }
+  
+  .team-section {
+    padding: 40px;
+    padding-top: 10px;
+    background-color: white;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-section h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .team-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+  }
+  
+  .team-member p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  
+
+  .footer-support {
+    background-color: #041786; /* xanh đậm hoặc tùy bạn */
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-support h3 {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-support p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HAAI - Water Monitoring</title>
+  <link rel="stylesheet" href="style01.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+          <div class="logo-section">
+            <img src="static\logo.png" alt="HAAI Logo" class="logo">
+            <p class="slogan">Water automated monitoring system with Artificial Intelligence</p>
+          </div>
+          <input type="text" placeholder="Tìm kiếm..." class="search-box">
+        </div>
+      
+        <nav class="navbar">
+            <ul class="nav-links">
+              <li><a href="main_page.html">Trang chủ</a></li>
+              <li><a href="intro_page.html">Giới thiệu</a></li>
+              <li><a href="#">Quan trắc tự động</a></li>
+              <li><a href="#">Dịch vụ</a></li>
+              <li><a href="#">Liên hệ</a></li>
+              <li><a href="#">Đăng nhập/Đăng ký</a></li>
+            </ul>
+          </nav>
+          
+      </header>
+      
+      
+
+    <section id="realtime-data">
+        <h2 style="text-align: center;">Dữ liệu thời gian thực</h2>
+        <div class="charts-container">
+            <canvas id="phChart" width="300" height="100"></canvas>
+            <canvas id="tdsChart" width="300" height="100"></canvas>
+            <canvas id="turbChart" width="300" height="100"></canvas>
+        </div>
+    </section>
+
+  <section class="gallery">
+    <p>Thư viện ảnh</p>
+    <div class="images">
+      <img src="static\image01.png" alt="Thiết bị 1"/>
+      <img src="static\image02.png" alt="Thiết bị 2"/>
+      <img src="static\image03.png" alt="Thiết bị 3"/>
+      <img src="static\image04.png" alt="Thiết bị 4"/>
+    </div>
+  </section>
+
+  <section class="sensor-section">
+    <h2>Hệ thống cảm biến</h2>
+  
+    <div class="sensor-item">
+      <img src="static\sensor1.png" alt="Cảm biến pH">
+      <div class="sensor-info">
+        <h3>Cảm biến pH</h3>
+        <p>Cảm biến độ pH DFRobot Gravity: Analog pH Sensor / Meter Kit For Arduino được sử dụng để đo độ pH trong môi trường nước, cảm biến bao gồm một que đo (Probe) và mạch xử lý, khuếch đại tín hiệu để có thể cho ra tín hiệu Analog có thể đọc bằng ADC của Vi điều khiển.</p>
+      </div>
+    </div>
+  
+    <div class="sensor-item">
+      <img src="static\sensor2.png" alt="Cảm biến đo độ đục">
+      <div class="sensor-info">
+        <h3>Cảm biến đo độ đục</h3>
+        <p>Cảm biến tổng chất rắn hòa tan DFRobot Gravity: Analog TDS Sensor/Meter for Arduino được sử dụng để đo tổng chất rắn hòa tan trong nước (TDS - Total Dissolved Solids) giúp xác định chất lượng nước, thông số TDS cho biết có bao nhiêu miligam chất rắn hòa tan hòa tan trong một lít nước, giá trị TDS càng cao thì chất rắn hòa tan trong nước càng nhiều và nước càng kém sạch.</p>
+      </div>
+    </div>
+  
+    <div class="sensor-item">
+      <img src="static\sensor3.png" alt="Cảm biến đo TDS (Tổng chất rắn hòa tan)">
+      <div class="sensor-info">
+        <h3>Cảm biến đo TDS (Tổng chất rắn hòa tan)</h3>
+        <p>Cảm biến tổng chất rắn hòa tan DFRobot Gravity: Analog TDS Sensor/Meter for Arduino được sử dụng để đo tổng chất rắn hòa tan trong nước (TDS - Total Dissolved Solids) giúp xác định chất lượng nước, thông số TDS cho biết có bao nhiêu miligam chất rắn hòa tan hòa tan trong một lít nước, giá trị TDS càng cao thì chất rắn hòa tan trong nước càng nhiều và nước càng kém sạch.</p>
+      </div>
+    </div>
+
+    <div class="sensor-item">
+      <img src="static\EC.png" alt="Cảm biến đo Độ dẫn điện">
+      <div class="sensor-info">
+        <h3>Cảm biến đo Độ dẫn điện (EC)</h3>
+        <p>Cảm biến độ dẫn điện EC (electro-conductivity) là chỉ số diễn tả tổng nồng độ ion hòa tan trong dung dịch. Độ dẫn điện có thể được thể hiện bằng một số đơn vị khác nhau nhưng đơn vị tiêu biểu được dùng để đo lường EC là millisiemens trên centimet (mS/cm) hoặc uS / cm.</p>
+      </div>
+    </div>
+
+    <div class="sensor-item">
+      <img src="static\temperature_sensor.png" alt="Cảm biến đo nhiệt độ và độ ẩm">
+      <div class="sensor-info">
+        <h3>Cảm biến nhiệt độ và độ ẩm</h3>
+        <p>Cảm biến độ ẩm và nhiệt độ DHT22 sử dụng giao tiếp 1 Wire dễ dàng kết nối với Vi điều khiển để thực hiện các ứng dụng đo nhiệt độ, độ ẩm môi trường, cảm biến có chất lượng tốt, kích thước nhỏ gọn, độ bền và độ ổn định cao.</p>
+      </div>
+    </div>
+
+    <div class="sensor-item">
+      <img src="static\ORP.png" alt="Cảm biến oxy hóa khử">
+      <div class="sensor-info">
+        <h3>Cảm biến oxy hóa khử</h3>
+        <p>Cảm biến oxy hoá khử DFRobot Gravity: Analog ORP Sensor Meter PRO được xử dụng để đo mức độ oxy hoá khử ORP (Oxidation–Reduction Potential) trong nước giúp xác định chất lượng nước, cảm biến bao gồm một que đo (Probe) và mạch xử lý, khuếch đại tín hiệu để có thể cho ra tín hiệu Analog có thể đọc bằng ADC của Vi điều khiển.</p>
+      </div>
+    </div>
+
+  </section>
+  
+  <section class="team-section">
+    <h2>Đội ngũ vận hành</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="static\Hang.jpg" alt="A">
+        <p>Trần Thị Bích Hằng</p>
+      </div>
+      <div class="team-member">
+        <img src="static\a.png" alt="B">
+        <p>Lưu Tuấn Anh</p>
+      </div>
+      <div class="team-member">
+        <img src="static\HaAnh.png" alt="C">
+        <p>Đỗ Thị Hà Anh</p>
+      </div>
+      <div class="team-member">
+        <img src="static\Nhi.png" alt="D">
+        <p>Phạm Yến Nhi</p>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer-support">
+    <h3>THÔNG TIN HỖ TRỢ</h3>
+    <p>Hotline: +84 865 059 770</p>
+    <p>Gmail: tranthibichhang_t67@hus.edu.vn</p>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
