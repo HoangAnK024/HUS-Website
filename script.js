@@ -1,7 +1,10 @@
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwR3Bq1wpvMp_xADXMMapNXhuy09QZ7eA4tEZXTgsu4yTBAO13HIFPd3N0zhrNWiAEg/exec'; // <-- thay đúng link mới
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwR3Bq1wpvMp_xADXMMapNXhuy09QZ7eA4tEZXTgsu4yTBAO13HIFPd3N0zhrNWiAEg/exec';
 
 fetch(SHEET_URL)
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error(`Lỗi HTTP: ${res.status}`);
+    return res.json();
+  })
   .then(data => {
     const labels = [];
     const phData = [];
@@ -9,76 +12,93 @@ fetch(SHEET_URL)
     const turbData = [];
 
     data.forEach(row => {
-      labels.push(row['Timestamp']);
-      phData.push(parseFloat(row['pH']));
-      tdsData.push(parseFloat(row['TDS']));
-      turbData.push(parseFloat(row['Turbidity']));
+      const time = formatTimestamp(row['Timestamp']);
+      labels.push(time);
+      phData.push(parseFloat(row['pH']) || 0);
+      tdsData.push(parseFloat(row['TDS']) || 0);
+      turbData.push(parseFloat(row['Turbidity']) || 0);
     });
 
-    renderChart('phChart', 'pH', labels, phData);
-    renderChart('tdsChart', 'TDS', labels, tdsData);
-    renderChart('turbChart', 'Turbidity', labels, turbData);
+    renderChart('phChart', 'pH', labels, phData, 'blue', 'lightblue');
+    renderChart('tdsChart', 'TDS', labels, tdsData, 'green', 'lightgreen');
+    renderChart('turbChart', 'Turbidity', labels, turbData, 'orange', 'peachpuff');
   })
   .catch(error => console.error("Lỗi khi fetch dữ liệu:", error));
 
+function formatTimestamp(timestamp) {
+  try {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString('en-GB'); // Hiển thị hh:mm:ss
+  } catch (e) {
+    return timestamp;
+  }
+}
 
-  function renderChart(id, label, labels, data) {
-    new Chart(document.getElementById(id), {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: label,
-          data: data,
-          borderColor: 'blue',
-          backgroundColor: 'lightblue',
-          tension: 0.3
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: true,
-            labels: {
-              font: {
-                size: 40 // Cỡ chữ legend
-              }
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: false,
-            title: {
-              display: true,
-              text: label,
-              font: {
-                size: 30 // Cỡ chữ tiêu đề trục Y
-              }
-            },
-            ticks: {
-              font: {
-                size: 20 // Cỡ chữ nhãn trục Y
-              }
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Timestamp',
-              font: {
-                size: 30 // Cỡ chữ tiêu đề trục X
-              }
-            },
-            ticks: {
-              font: {
-                size: 20 // Cỡ chữ nhãn trục X
-              }
+function renderChart(id, label, labels, data, borderColor, backgroundColor) {
+  const ctx = document.getElementById(id);
+  if (!ctx) return;
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: label,
+        data: data,
+        borderColor: borderColor,
+        backgroundColor: backgroundColor,
+        tension: 0.3,
+        pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false, // Cho canvas co dãn tốt
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            font: {
+              size: 14 // nhỏ lại cho phù hợp mobile
             }
           }
         }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: label,
+            font: {
+              size: 16
+            }
+          },
+          ticks: {
+            stepSize: 0.2, // Hiển thị nhiều giá trị hơn
+            autoSkip: true,
+            font: {
+              size: 12
+            }
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Timestamp',
+            font: {
+              size: 16
+            }
+          },
+          ticks: {
+            font: {
+              size: 12
+            },
+            maxRotation: 45,
+            minRotation: 30
+          }
+        }
       }
-    });
-  }
-  
+    }
+  });
+}
