@@ -15,7 +15,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .logo-section {
@@ -25,8 +24,7 @@ header {
 }
 
 .logo {
-  padding-left: 15px;
-  height: 150px;
+  height: 300px;
 }
 
 .slogan {
@@ -35,7 +33,6 @@ header {
   font-size: 27px;
   color: rgb(21, 100, 146);
   margin-top: 4px;
-  margin-left: 5px;
   margin-bottom: 10px;
 }
 
@@ -55,6 +52,8 @@ header {
 .navbar {
   background-color: #59a6e7; /* màu nền xanh dương */
   padding: 10px 0;
+  margin: 10px 0;
+  border-radius: 6px;
 }
 
 .nav-links {
@@ -68,15 +67,15 @@ header {
 
 .nav-links li a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
   font-family: "Arial", sans-serif;
   transition: color 0.2s ease;
 }
 
 .nav-links li a:hover {
-  color: white;
+  color: rgb(180, 180, 180);
 }
 
 #realtime-data {
@@ -264,8 +263,10 @@ header {
     gap: 10px;
   }
 
+
   .logo {
-    height: 100px;
+    height: 200px;
+    margin: 0 auto;
   }
 
   .slogan {
